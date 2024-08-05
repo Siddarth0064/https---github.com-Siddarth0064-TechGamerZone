@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGamerZone</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER DESIGN-->
+    <header class="header">
+        <a href="#" class="logo ">
+            <img src="logo_img.png" alt="TechGamerZone Logo">
+            <span>T</span><span>e</span><span>c</span><span>h</span><span>G</span><span>a</span><span>m</span><span>e</span><span>r</span><span>Z</span><span>o</span><span>n</span><span>e</span>
+        </span>
+        </a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#portfolio" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Feedback</a>
+        </nav>
+    </header> 
+    
+    <!-- HOME SECTION DESIGN-->
+    <!-- <section class="home" id="home">
+        <div class="home-content">
+            <h1>Welcome to TechGamerZone</h1>
+        </div>
+    </section> -->
+
+    <!-- GAMES SECTION DESIGN-->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>GAMES</span></h2>
+       
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="tictactoe2_img.jpg" alt="">
+                <div class="portfolio-layer">
+                    <h4>Tic Tac Toe</h4>
+                    <p>A classic game of Xs and Os. Challenge your friends or play against the computer.</p>
+                    <a href="tictactoe.html" class="btn">Play Now</a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
+                <img src="floppybird_image.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Flappy Bird</h4>
+                    <p>Navigate the bird through the pipes without hitting them. How far can you go?</p>
+                    <a href="flappybird.html" class="btn">Play Now</a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
+                <img src="comingsoon2_img.webp" alt="">
+                <div class="portfolio-layer">
+                    <h4>More Games Coming Soon...!</h4>
+                    <p>Stay tuned for exciting new games.</p>
+                    <a href="flappybird.html" class="btn">Explore</a>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION DESIGN -->
+    <!-- <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Us</span></h2>
+        <form name="submit-to-google-sheet" action="#">
+            <div class="input-box">
+                <input type="text" name="Full Name" placeholder="Full Name" required>
+                <input type="email" name="Email Address" placeholder="Email Address" required>
+            </div>
+            <div class="input-box">
+                <input type="number" name="Mobile Number" placeholder="Mobile Number" required>
+                <input type="text" name="Email Subject" placeholder="Email Subject" required>
+            </div>
+            <textarea cols="30" rows="10" name="Message" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+        <span id="msg"></span>
+    </section> -->
+    <!-- SUPPORT TICKET / FEEDBACK SECTION DESIGN -->
+<section class="feedback contact" id="contact">
+    <h2 class="heading">Submit a <span>Ticket</span> or <span>Feedback</span></h2>
+    <form name="submit-feedback-form" action="#">
+        <div class="input-box">
+            <input type="text" name="Full Name" placeholder="Full Name" required>
+            <input type="email" name="Email Address" placeholder="Email Address" required>
+        </div>
+        <textarea class="input-box" cols="30" rows="10" name="Feedback Message" placeholder="Your Feedback or Issue Details" required></textarea>
+        <input type="submit" value="Submit Ticket" class="btn">
+    </form>
+    <span id="msg"></span>
+</section>
+
+
+    <!-- Footer DESIGN -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2024 TechGamerZone. All Rights Reserved</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
+        </div>
+    </footer>
+
+    
+
+    <!-- MAIN JAVA SCRIPT -->
+    <script src="homepage.js"></script>
+    
+</body>
+</html>

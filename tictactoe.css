@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px; /* Adjusted to fit the content better */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem; /* Added padding for better spacing */
+}
+
+.main-content {
+    width: 100%;
+    text-align: center;
+}
+
+.main-content h1 {
+    margin-bottom: 2rem;
+    color: #1f82c5;
+}
+
+.game-options, .symbol-selection {
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #1f82c5;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin: 0.5rem;
+}
+
+.btn:hover {
+    background-color: #155a8a;
+}
+
+/* Styles for the selected button */
+.btn.selected {
+    background-color: #00aaff; /* Brighter color for selected state */
+    box-shadow: 0 0 10px rgba(0, 160, 255, 0.7); /* Blue shadow */
+    transform: scale(1.05); /* Slightly enlarge the selected button */
+}
+
+.play-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-btn:hover {
+    background-color: #45a049;
+}
