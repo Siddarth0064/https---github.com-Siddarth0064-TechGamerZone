@@ -16,6 +16,8 @@ var solution = [
     "645312"
 ];
 
+let touchStartX, touchStartY, draggedNumber = null;
+
 window.onload = function() {
     setGame();
 };
@@ -30,6 +32,9 @@ function setGame() {
         number.setAttribute("draggable", "true");
         number.addEventListener("dragstart", dragStart);
         number.addEventListener("dragend", dragEnd);
+        number.addEventListener("touchstart", touchStart);
+        number.addEventListener("touchend", touchEnd);
+        number.addEventListener("touchmove", touchMove);
         document.getElementById("digits").appendChild(number);
     }
 
@@ -57,6 +62,9 @@ function setGame() {
 
             tile.addEventListener("dragover", dragOver);
             tile.addEventListener("drop", drop);
+            tile.addEventListener("touchstart", tileTouchStart);
+            tile.addEventListener("touchend", tileTouchEnd);
+            tile.addEventListener("touchmove", tileTouchMove);
             document.getElementById("board").appendChild(tile);
         }
     }
@@ -88,14 +96,75 @@ function drop(e) {
         // Update tile content with the dragged number
         tile.innerText = number.innerText;
 
-        // Check if the number is correct
-        // if (solution[r][c] !== number.innerText) {
-        //     alert("Incorrect!");
-        // }
-
         // Check if the game is won after the move
         checkWin();
     }
+}
+
+function touchStart(e) {
+    e.preventDefault();
+    let touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    draggedNumber = e.target;
+}
+
+function touchMove(e) {
+    e.preventDefault();
+    if (draggedNumber) {
+        let touch = e.touches[0];
+        let x = touch.clientX;
+        let y = touch.clientY;
+
+        let board = document.getElementById("board");
+        let tile = document.elementFromPoint(x, y);
+
+        if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+            tile.innerText = draggedNumber.innerText;
+            if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
+                alert("Incorrect!");
+            }
+            checkWin();
+        }
+    }
+}
+
+function touchEnd(e) {
+    e.preventDefault();
+    draggedNumber = null;
+}
+
+function tileTouchStart(e) {
+    e.preventDefault();
+    let tile = e.target;
+    if (tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+        draggedNumber = tile;
+    }
+}
+
+function tileTouchMove(e) {
+    e.preventDefault();
+    if (draggedNumber) {
+        let touch = e.touches[0];
+        let x = touch.clientX;
+        let y = touch.clientY;
+
+        let board = document.getElementById("board");
+        let tile = document.elementFromPoint(x, y);
+
+        if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+            tile.innerText = draggedNumber.innerText;
+            if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
+                alert("Incorrect!");
+            }
+            checkWin();
+        }
+    }
+}
+
+function tileTouchEnd(e) {
+    e.preventDefault();
+    draggedNumber = null;
 }
 
 function checkWin() {
@@ -122,24 +191,24 @@ function showWinner() {
 }
 
 function resetGame() {
-      // Hide the winner overlay
-      const winnerOverlay = document.querySelector('.winner-overlay');
-      if (winnerOverlay) {
-          winnerOverlay.remove();
-      }
-  
-      // Clear the board
-      const boardElement = document.getElementById("board");
-      while (boardElement.firstChild) {
-          boardElement.removeChild(boardElement.firstChild);
-      }
-  
-      // Clear the digits
-      const digitsElement = document.getElementById("digits");
-      while (digitsElement.firstChild) {
-          digitsElement.removeChild(digitsElement.firstChild);
-      }
-  
-      // Reinitialize the game
-      setGame();
+    // Hide the winner overlay
+    const winnerOverlay = document.querySelector('.winner-overlay');
+    if (winnerOverlay) {
+        winnerOverlay.remove();
+    }
+
+    // Clear the board
+    const boardElement = document.getElementById("board");
+    while (boardElement.firstChild) {
+        boardElement.removeChild(boardElement.firstChild);
+    }
+
+    // Clear the digits
+    const digitsElement = document.getElementById("digits");
+    while (digitsElement.firstChild) {
+        digitsElement.removeChild(digitsElement.firstChild);
+    }
+
+    // Reinitialize the game
+    setGame();
 }
