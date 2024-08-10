@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(6, 40px); /* Adjust size as needed */
+    grid-template-rows: repeat(6, 40px);
+    grid-gap: 2px;
+}
+
+.tile {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid black;
+}
+
+.tile-fixed {
+    background-color: lightgray;
+}
+
+.horizontal-line {
+    border-bottom: 2px solid black;
+}
+
+.vertical-line {
+    border-right: 2px solid black;
+}
+
+.digits {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.number {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.winner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.winner-overlay h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.winner-overlay p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.winner-overlay button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
