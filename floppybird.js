@@ -1,4 +1,7 @@
-
+let gameOverOpacity = 0;
+let scoreOpacity = 0;
+const fadeDuration = 1000; // duration in milliseconds
+let startTime = 0;
 //board
 let board;
 let boardWidth = 460;
@@ -32,7 +35,7 @@ let bottomPipeImg;
 //physics
 let velocityX = -2; //pipes moving left speed
 let velocityY = 0; //bird jump speed
-let gravity = 0.4;
+let gravity = 0.2;
 
 let gameOver = false;
 let score = 0;
@@ -77,6 +80,10 @@ function restartGame() {
     score = 0;
     gameOver = false;
     velocityY = 0; // Reset the velocity
+
+       // Hide the restart button
+       let restartButton = document.getElementById("restartButton");
+       restartButton.style.display = "none";
 }
 
 function moveBird(e) {
@@ -92,6 +99,7 @@ function moveBird(e) {
 function update() {
     requestAnimationFrame(update);
     if (gameOver) {
+        displayGameOver();
         return;
     }
     context.clearRect(0, 0, board.width, board.height);
@@ -126,14 +134,61 @@ function update() {
     while (pipeArray.length > 0 && pipeArray[0].x < -pipeWidth) {
         pipeArray.shift(); //removes first element from the array
     }
+    function displayGameOver() {
+          // Initialize startTime if it's not set
+    if (startTime === 0) {
+        startTime = Date.now();
+    } 
+        // Apply a blur effect to the background
+        context.filter = "blur(5px)";
+        context.clearRect(0, 0, board.width, board.height);
+        context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+    
+        for (let i = 0; i < pipeArray.length; i++) {
+            let pipe = pipeArray[i];
+            context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
+        }
+    
+         // Transition effect for "GAME OVER" and score
+    const elapsedTime = Date.now() - startTime;
+    const progress = Math.min(elapsedTime / fadeDuration, 1); // progress ranges from 0 to 1
+
+    gameOverOpacity = progress;
+    scoreOpacity = Math.max(0, (progress - 0.5) * 2); // score fades in after 0.5 seconds
+
+
+        // Overlay Game Over and score
+        context.filter = "none"; // Remove the blur effect for the text
+        context.fillStyle = "blue";
+        context.font = "45px sans-serif";
+        context.globalAlpha = gameOverOpacity;
+        context.fillText("GAME OVER", board.width / 2 - 130, board.height / 2 - 50); // Centered
+       context.globalAlpha = scoreOpacity;
+        context.fillText("Score: " + score, board.width / 2 - 90, board.height / 2 + 20);
+    
+
+         // Show the restart button
+    let restartButton = document.getElementById("restartButton");
+    restartButton.style.display = "block";  // Make the button visible
+
+    // Position the button in the center of the canvas
+    restartButton.style.position = "absolute";
+    restartButton.style.left = board.offsetLeft + board.width / 2 - restartButton.offsetWidth / 2 + "px";
+    restartButton.style.top = board.offsetTop + board.height / 2 + 50 + "px";
+  // Request next animation frame if the transition is not complete
+  if (progress < 1) {
+    requestAnimationFrame(displayGameOver);
+}
+    }
+
 
     //score
-    context.fillStyle = "white";
+    context.fillStyle = "blue";
     context.font="45px sans-serif";
     context.fillText(score, 5, 45);
 
     if (gameOver) {
-        context.fillText("GAME OVER", 5, 90);
+        displayGameOver();
     }
 }
 
@@ -146,7 +201,7 @@ function placePipes() {
     // 0 -> -128 (pipeHeight/4)
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2);
-    let openingSpace = board.height/4;
+    let openingSpace = board.height/3;
 
     let topPipe = {
         img : topPipeImg,
@@ -169,20 +224,20 @@ function placePipes() {
     pipeArray.push(bottomPipe);
 }
 
-function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
-        //jump
-        velocityY = -6;
+// function moveBird(e) {
+//     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX" ||e.type === "click" ) {
+//         //jump
+//         velocityY = -6;
 
-        //reset game
-        if (gameOver) {
-            bird.y = birdY;
-            pipeArray = [];
-            score = 0;
-            gameOver = false;
-        }
-    }
-}
+//         //reset game
+//         if (gameOver) {
+//             bird.y = birdY;
+//             pipeArray = [];
+//             score = 0;
+//             gameOver = false;
+//         }
+//     }
+// }
 
 function detectCollision(a, b) {
     return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner

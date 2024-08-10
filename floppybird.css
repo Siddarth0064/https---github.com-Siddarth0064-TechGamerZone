@@ -10,6 +10,50 @@ body {
     background-image: url("./flappybirdbg.png");
     margin: 0 auto;
 }
+
+
+
+
+
+/* this is for rester button style */
+#restartButton {
+    display: none;
+    background-color: #0056b3; /* Example: Portfolio button color */
+    color: #fff; /* Example: Text color */
+    padding: 10px 20px;
+    border: 2px solid #004080; /* Example: Border color */
+    border-radius: 5px; /* Example: Rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#restartButton:hover {
+    background-color: #004080; /* Example: Hover background color */
+    transform: scale(1.05); /* Example: Slightly enlarge on hover */
+    border-color: #003366; /* Example: Darker border on hover */
+}
+
+#restartButton:active {
+    transform: scale(0.95); /* Example: Slightly shrink on click */
+}
+
+#playButton {
+    /* display: none; */
+    background-color: #0056b3; /* Example: Portfolio button color */
+    color: #fff; /* Example: Text color */
+    padding: 10px 20px;
+    border: 2px solid #004080; /* Example: Border color */
+    border-radius: 5px; /* Example: Rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#playButton:active {
+    transform: scale(0.95); /* Example: Slightly shrink on click */
+}
+
 #flyButton{
     display: none;
 }
