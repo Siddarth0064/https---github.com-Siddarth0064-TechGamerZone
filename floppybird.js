@@ -35,7 +35,26 @@ let bottomPipeImg;
 //physics
 let velocityX = -2; //pipes moving left speed
 let velocityY = 0; //bird jump speed
-let gravity = 0.2;
+// let gravity = 0.2;
+
+let gravity;
+const mobileGravity = 0.1; // Gravity value for mobile devices
+const desktopGravity = 0.2; // Gravity value for desktop devices
+
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+// Set gravity based on device type
+function setGravity() {
+    if (isMobileDevice()) {
+        gravity = mobileGravity;
+    } else {
+        gravity = desktopGravity;
+    }
+}
+
+
+
 
 let gameOver = false;
 let score = 0;
@@ -54,6 +73,11 @@ window.onload = function() {
 
     bottomPipeImg = new Image();
     bottomPipeImg.src = "./bottompipe.png";
+    
+
+
+    // Set gravity based on the device
+    setGravity();
 
     // Attach event listeners for controls
     document.addEventListener("keydown", moveBird); // Desktop control
@@ -134,6 +158,9 @@ function update() {
     while (pipeArray.length > 0 && pipeArray[0].x < -pipeWidth) {
         pipeArray.shift(); //removes first element from the array
     }
+
+
+    
     function displayGameOver() {
           // Initialize startTime if it's not set
     if (startTime === 0) {
