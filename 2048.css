@@ -1,15 +1,25 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 20px 0;
 }
 
 hr {
-    width: 500px;
+    width: 90%;
+    color: #089cfe;
+    margin: 10px auto;
 }
 
 #board {
-    width: 400px;
-    height: 400px;
+    width: 90vw; /* 90% of viewport width */
+    height: 90vw; /* 90% of viewport width to keep it square */
+    max-width: 400px; /* Maximum width to avoid it getting too large */
+    max-height: 400px; /* Maximum height to avoid it getting too large */
     background-color: #3eace3;
     margin: 0 auto;
     display: flex;
@@ -19,7 +29,6 @@ hr {
     /* border-image: url('wave.svg') 30 stretch; */
     border-image-slice: 1;
 }
-
 #board::before,
 #board::after {
     content: '';
@@ -44,10 +53,12 @@ hr {
 }
 
 .tile {
-    width: 90px;
-    height: 90px;
-    border: 5px solid #ffffff;
-    font-size: 40px;
+    width: 22vw; /* 22% of viewport width */
+    height: 22vw; /* 22% of viewport width to keep it square */
+    max-width: 90px; /* Maximum width to avoid it getting too large */
+    max-height: 90px; /* Maximum height to avoid it getting too large */
+    border: 5px solid #bbada0;
+    font-size: 4vw; /* Font size relative to viewport width */
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -55,8 +66,8 @@ hr {
 }
 
 /* colored tiles */
-.x2 { background-color: #eef359; color: #000000; }
-.x4 { background-color: #ece0ca; color: #000000; }
+.x2 { background-color: #f7f6f3; color: #000000; }
+.x4 { background-color: #cfd362; color: #000000; }
 .x8 { background-color: #f4b17a; color:  #000000; }
 .x16 { background-color: #f59575; color: rgb(0, 0, 0); }
 .x32 { background-color: #f57c5f; color: rgb(0, 0, 0); }
@@ -91,21 +102,42 @@ hr {
 }
 
 .control-icon:hover {
-    color: #089cfe; /* Change color on hover */
+    color: #fe084e; /* Change color on hover */
 }
 
 #up {
     margin-bottom: 5px;
+    font-size: 7vw;
 }
 
 #down {
     margin-top: 5px;
+    font-size: 7vw;
 }
 
 #left {
     margin-right: 50px;
+    font-size: 7vw;
 }
 
 #right {
     margin-left: 50px;
+    font-size: 7vw;
+}
+/* Media Query for devices with max-width of 768px */
+@media (max-width: 768px) {
+    #board {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .tile {
+        width: 20vw;
+        height: 20vw;
+        font-size: 5vw;
+    }
+
+    .control-icon {
+        font-size: 10vw;
+    }
 }
