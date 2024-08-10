@@ -53,7 +53,7 @@ const mobileSettings = {
 
 const desktopSettings = {
     velocityX: -2,
-    velocityY: -2.5,
+    velocityY: -5,
     pipeWidth: 64,
     pipeHeight: 512,
     birdWidth: 34,
@@ -124,7 +124,7 @@ window.onload = function() {
 
     // Attach event listeners for controls
     document.addEventListener("keydown", moveBird); // Desktop control
-    document.getElementById("flyButton").addEventListener("click", moveBird); // Mobile control
+    document.getElementById("playButton").addEventListener("click", moveBird); // Mobile control
     document.getElementById("playButton").addEventListener("click", startGame); // Play button
 
     requestAnimationFrame(update);
@@ -159,7 +159,7 @@ function moveBird(e) {
         if (gameOver) {
             restartGame();
         } else {
-            velocityY = isMobileDevice() ? -2.5 : -2.5;
+            velocityY = isMobileDevice() ? -2.5 : -5;
         }
     }
 }
