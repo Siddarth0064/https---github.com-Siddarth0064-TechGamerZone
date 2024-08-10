@@ -121,9 +121,9 @@ function touchMove(e) {
 
         if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
             tile.innerText = draggedNumber.innerText;
-            if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
-                alert("Incorrect!");
-            }
+            // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
+            //     alert("Incorrect!");
+            // }
             checkWin();
         }
     }
@@ -154,9 +154,9 @@ function tileTouchMove(e) {
 
         if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
             tile.innerText = draggedNumber.innerText;
-            if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
-                alert("Incorrect!");
-            }
+            // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
+            //     alert("Incorrect!");
+            // }
             checkWin();
         }
     }
