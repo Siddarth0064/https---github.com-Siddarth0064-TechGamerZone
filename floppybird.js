@@ -79,7 +79,7 @@ function setGameSettings() {
     }
 }
 let gravity;
-const mobileGravity = 0.2; // Gravity value for mobile devices
+const mobileGravity = 0.1; // Gravity value for mobile devices
 const desktopGravity = 0.2; // Gravity value for desktop devices
 
 function isMobileDevice() {
