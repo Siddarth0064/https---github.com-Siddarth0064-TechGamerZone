@@ -309,8 +309,6 @@ function drop(e) {
 
         // Update tile content with the dragged number
         tile.innerText = number.innerText;
-
-        // Check if the game is won after the move
         checkWin();
     }
 }
@@ -321,6 +319,8 @@ function touchStart(e) {
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
     draggedNumber = e.target;
+
+    previouslyTouchedTile = document.elementFromPoint(touchStartX, touchStartY);
 }
 
 function touchMove(e) {
@@ -330,15 +330,13 @@ function touchMove(e) {
         let x = touch.clientX;
         let y = touch.clientY;
 
-        let board = document.getElementById("board");
         let tile = document.elementFromPoint(x, y);
-
         if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+            // Remove the number from the previously touched tile
+            removeNumberFromPreviouslyTouchedTile();
+
+            // Update the current tile with the dragged number
             tile.innerText = draggedNumber.innerText;
-            // Commented out alert to disable it
-            // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
-            //     alert("Incorrect!");
-            // }
             checkWin();
         }
     }
@@ -347,8 +345,8 @@ function touchMove(e) {
 function touchEnd(e) {
     e.preventDefault();
     draggedNumber = null;
+    previouslyTouchedTile = null;
 }
-
 function tileTouchStart(e) {
     e.preventDefault();
     let tile = e.target;
@@ -364,15 +362,13 @@ function tileTouchMove(e) {
         let x = touch.clientX;
         let y = touch.clientY;
 
-        let board = document.getElementById("board");
         let tile = document.elementFromPoint(x, y);
-
         if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+            // Remove the number from the previously touched tile
+            removeNumberFromPreviouslyTouchedTile();
+
+            // Update the current tile with the dragged number
             tile.innerText = draggedNumber.innerText;
-            // Commented out alert to disable it
-            // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
-            //     alert("Incorrect!");
-            // }
             checkWin();
         }
     }
