@@ -8,28 +8,34 @@ body {
 #board {
     /* background-color: skyblue; */
     background-image: url("./flappybirdbg.png");
-   
+    margin: 0 auto;
 }
-
-#gameOverScreen {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.hidden {
+#flyButton{
     display: none;
 }
+#controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
 
-#restartButton {
+button {
     padding: 10px 20px;
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 16px;
     cursor: pointer;
+}
+
+/* Responsive styling for mobile */
+@media only screen and (max-width: 768px) {
+    #board {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    button {
+        font-size: 20px;
+    }
 }

@@ -41,18 +41,10 @@ window.onload = function() {
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
-    context = board.getContext("2d"); //used for drawing on the board
+    context = board.getContext("2d"); // used for drawing on the board
 
-    //draw flappy bird
-    // context.fillStyle = "green";
-    // context.fillRect(bird.x, bird.y, bird.width, bird.height);
-
-    //load images
     birdImg = new Image();
     birdImg.src = "./flappybird.png";
-    birdImg.onload = function() {
-        context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
-    }
 
     topPipeImg = new Image();
     topPipeImg.src = "./toppipe.png";
@@ -60,9 +52,41 @@ window.onload = function() {
     bottomPipeImg = new Image();
     bottomPipeImg.src = "./bottompipe.png";
 
+    // Attach event listeners for controls
+    document.addEventListener("keydown", moveBird); // Desktop control
+    document.getElementById("flyButton").addEventListener("click", moveBird); // Mobile control
+    document.getElementById("playButton").addEventListener("click", startGame); // Play button
+
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //every 1.5 seconds
-    document.addEventListener("keydown", moveBird);
+    setInterval(placePipes, 1500); // Generate pipes every 1.5 seconds
+};
+
+function startGame() {
+    if (gameOver) {
+        restartGame();
+    } else {
+        // Ensure the game starts when not in gameOver state
+        gameOver = false;
+        velocityY = -6; // Initial jump to start the game
+    }
+}
+
+function restartGame() {
+    bird.y = birdY;
+    pipeArray = [];
+    score = 0;
+    gameOver = false;
+    velocityY = 0; // Reset the velocity
+}
+
+function moveBird(e) {
+    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX" || e.type === "click" ) {
+        if (gameOver) {
+            restartGame();
+        } else {
+            velocityY = -6; // Apply jump
+        }
+    }
 }
 
 function update() {
