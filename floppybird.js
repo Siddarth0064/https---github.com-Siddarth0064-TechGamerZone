@@ -44,7 +44,7 @@ let bottomPipeImg;
 
 const mobileSettings = {
     velocityX: -1.5, // Slower pipe speed for mobile
-    velocityY: -3.5,   // Slightly less jump force for mobile
+    velocityY: -2.7,   // Slightly less jump force for mobile
     pipeWidth: 48,   // Smaller pipe width for mobile
     pipeHeight: 384, // Smaller pipe height for mobile
     birdWidth: 25,   // Smaller bird for mobile
@@ -53,7 +53,7 @@ const mobileSettings = {
 
 const desktopSettings = {
     velocityX: -2,
-    velocityY: -4.6,
+    velocityY: -4.5,
     pipeWidth: 64,
     pipeHeight: 512,
     birdWidth: 34,
@@ -159,7 +159,7 @@ function moveBird(e) {
         if (gameOver) {
             restartGame();
         } else {
-            velocityY = isMobileDevice() ? mobileSettings.velocityY : desktopSettings.velocityY;
+            velocityY = isMobileDevice() ? -2.5 : -4.5;
         }
     }
 }
