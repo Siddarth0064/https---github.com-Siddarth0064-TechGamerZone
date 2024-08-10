@@ -16,7 +16,7 @@ var solution = [
     "645312"
 ];
 
-let touchStartX, touchStartY, draggedNumber = null;
+// let touchStartX, touchStartY, draggedNumber = null;
 
 window.onload = function() {
     setGame();
@@ -32,9 +32,6 @@ function setGame() {
         number.setAttribute("draggable", "true");
         number.addEventListener("dragstart", dragStart);
         number.addEventListener("dragend", dragEnd);
-        number.addEventListener("touchstart", touchStart);
-        number.addEventListener("touchend", touchEnd);
-        number.addEventListener("touchmove", touchMove);
         document.getElementById("digits").appendChild(number);
     }
 
@@ -62,9 +59,6 @@ function setGame() {
 
             tile.addEventListener("dragover", dragOver);
             tile.addEventListener("drop", drop);
-            tile.addEventListener("touchstart", tileTouchStart);
-            tile.addEventListener("touchend", tileTouchEnd);
-            tile.addEventListener("touchmove", tileTouchMove);
             document.getElementById("board").appendChild(tile);
         }
     }
@@ -101,71 +95,63 @@ function drop(e) {
     }
 }
 
-function touchStart(e) {
-    e.preventDefault();
-    let touch = e.touches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-    draggedNumber = e.target;
-}
+// function touchMove(e) {
+//     e.preventDefault();
+//     if (draggedNumber) {
+//         let touch = e.touches[0];
+//         let x = touch.clientX;
+//         let y = touch.clientY;
 
-function touchMove(e) {
-    e.preventDefault();
-    if (draggedNumber) {
-        let touch = e.touches[0];
-        let x = touch.clientX;
-        let y = touch.clientY;
+//         let board = document.getElementById("board");
+//         let tile = document.elementFromPoint(x, y);
 
-        let board = document.getElementById("board");
-        let tile = document.elementFromPoint(x, y);
+//         if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+//             tile.innerText = draggedNumber.innerText;
+//             // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
+//             //     alert("Incorrect!");
+//             // }
+//             checkWin();
+//         }
+//     }
+// }
 
-        if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
-            tile.innerText = draggedNumber.innerText;
-            // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
-            //     alert("Incorrect!");
-            // }
-            checkWin();
-        }
-    }
-}
+// function touchEnd(e) {
+//     e.preventDefault();
+//     draggedNumber = null;
+// }
 
-function touchEnd(e) {
-    e.preventDefault();
-    draggedNumber = null;
-}
+// function tileTouchStart(e) {
+//     e.preventDefault();
+//     let tile = e.target;
+//     if (tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+//         draggedNumber = tile;
+//     }
+// }
 
-function tileTouchStart(e) {
-    e.preventDefault();
-    let tile = e.target;
-    if (tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
-        draggedNumber = tile;
-    }
-}
+// function tileTouchMove(e) {
+//     e.preventDefault();
+//     if (draggedNumber) {
+//         let touch = e.touches[0];
+//         let x = touch.clientX;
+//         let y = touch.clientY;
 
-function tileTouchMove(e) {
-    e.preventDefault();
-    if (draggedNumber) {
-        let touch = e.touches[0];
-        let x = touch.clientX;
-        let y = touch.clientY;
+//         let board = document.getElementById("board");
+//         let tile = document.elementFromPoint(x, y);
 
-        let board = document.getElementById("board");
-        let tile = document.elementFromPoint(x, y);
+//         if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
+//             tile.innerText = draggedNumber.innerText;
+//             // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
+//             //     alert("Incorrect!");
+//             // }
+//             checkWin();
+//         }
+//     }
+// }
 
-        if (tile && tile.classList.contains("tile") && !tile.classList.contains("tile-fixed")) {
-            tile.innerText = draggedNumber.innerText;
-            // if (solution[parseInt(tile.id.split("-")[0])][parseInt(tile.id.split("-")[1])] !== draggedNumber.innerText) {
-            //     alert("Incorrect!");
-            // }
-            checkWin();
-        }
-    }
-}
-
-function tileTouchEnd(e) {
-    e.preventDefault();
-    draggedNumber = null;
-}
+// function tileTouchEnd(e) {
+//     e.preventDefault();
+//     draggedNumber = null;
+// }
 
 function checkWin() {
     for (let r = 0; r < 6; r++) {
