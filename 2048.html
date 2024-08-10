@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>2048</title>
-        <link rel="stylesheet" href="2048.css">
-        <script src="2048.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Font Awesome Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <body>
-        <h1>2048</h1>
-        <hr>
-        <h2>Score: <span id="score">0</span></h2>
-        <div id="board">
+    <title>2048</title>
+    <link rel="stylesheet" href="2048.css">
+    <script src="2048.js" defer></script>
+</head>
+<body>
+    <h1>2048</h1>
+    <hr>
+    <h2>Score: <span id="score">0</span></h2>
+    <div id="board"></div>
+    <div class="controls">
+        <div class="control-row">
+            <i id="up" class="fa-solid fa-caret-up control-icon"></i>
         </div>
-    </body>
+        <div class="control-row">
+            <i id="left" class="fa-solid fa-caret-left control-icon"></i>
+            <i id="right" class="fa-solid fa-caret-right control-icon"></i>
+        </div>
+        <div class="control-row">
+            <i id="down" class="fa-solid fa-caret-down control-icon"></i>
+        </div>
+    </div>
+</body>
 </html>

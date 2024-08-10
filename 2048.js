@@ -186,4 +186,33 @@ function hasEmptyTile() {
         }
     }
     return false;
+}window.onload = function() {
+    setGame();
+    setupControls(); // Add this line to setup controls
+}
+
+function setupControls() {
+    document.querySelector("#up").addEventListener("click", () => {
+        slideUp();
+        setTwo();
+        document.getElementById("score").innerText = score;
+    });
+
+    document.querySelector("#down").addEventListener("click", () => {
+        slideDown();
+        setTwo();
+        document.getElementById("score").innerText = score;
+    });
+
+    document.querySelector("#left").addEventListener("click", () => {
+        slideLeft();
+        setTwo();
+        document.getElementById("score").innerText = score;
+    });
+
+    document.querySelector("#right").addEventListener("click", () => {
+        slideRight();
+        setTwo();
+        document.getElementById("score").innerText = score;
+    });
 }
