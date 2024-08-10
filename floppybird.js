@@ -8,9 +8,14 @@ let boardWidth = 460;
 let boardHeight = 640;
 let context;
 
+// Physics and dimensions for mobile and desktop
+let velocityX, velocityY, pipeWidth, pipeHeight, birdWidth, birdHeight;
+
+
+
 //bird
-let birdWidth = 34; //width/height ratio = 408/228 = 17/12
-let birdHeight = 24;
+// let birdWidth = 34; //width/height ratio = 408/228 = 17/12
+// let birdHeight = 24;
 let birdX = boardWidth/8;
 let birdY = boardHeight/2;
 let birdImg;
@@ -24,8 +29,8 @@ let bird = {
 
 //pipes
 let pipeArray = [];
-let pipeWidth = 64; //width/height ratio = 384/3072 = 1/8
-let pipeHeight = 512;
+// let pipeWidth = 64; //width/height ratio = 384/3072 = 1/8
+// let pipeHeight = 512;
 let pipeX = boardWidth;
 let pipeY = 0;
 
@@ -33,10 +38,46 @@ let topPipeImg;
 let bottomPipeImg;
 
 //physics
-let velocityX = -2; //pipes moving left speed
-let velocityY = 0; //bird jump speed
+// let velocityX = -2; //pipes moving left speed
+// let velocityY = 0; //bird jump speed
 // let gravity = 0.2;
 
+const mobileSettings = {
+    velocityX: -1.5, // Slower pipe speed for mobile
+    velocityY: -5,   // Slightly less jump force for mobile
+    pipeWidth: 48,   // Smaller pipe width for mobile
+    pipeHeight: 384, // Smaller pipe height for mobile
+    birdWidth: 25,   // Smaller bird for mobile
+    birdHeight: 18   // Smaller bird height for mobile
+};
+
+const desktopSettings = {
+    velocityX: -2,
+    velocityY: -6,
+    pipeWidth: 64,
+    pipeHeight: 512,
+    birdWidth: 34,
+    birdHeight: 24
+};
+function setGameSettings() {
+    if (isMobileDevice()) {
+        gravity = mobileGravity;
+        velocityX = mobileSettings.velocityX;
+        velocityY = mobileSettings.velocityY;
+        pipeWidth = mobileSettings.pipeWidth;
+        pipeHeight = mobileSettings.pipeHeight;
+        bird.width = mobileSettings.birdWidth;
+        bird.height = mobileSettings.birdHeight;
+    } else {
+        gravity = desktopGravity;
+        velocityX = desktopSettings.velocityX;
+        velocityY = desktopSettings.velocityY;
+        pipeWidth = desktopSettings.pipeWidth;
+        pipeHeight = desktopSettings.pipeHeight;
+        bird.width = desktopSettings.birdWidth;
+        bird.height = desktopSettings.birdHeight;
+    }
+}
 let gravity;
 const mobileGravity = 0.1; // Gravity value for mobile devices
 const desktopGravity = 0.2; // Gravity value for desktop devices
@@ -77,7 +118,9 @@ window.onload = function() {
 
 
     // Set gravity based on the device
-    setGravity();
+    setGameSettings();
+    bird.x = birdX;
+    bird.y = birdY;
 
     // Attach event listeners for controls
     document.addEventListener("keydown", moveBird); // Desktop control
@@ -103,8 +146,9 @@ function restartGame() {
     pipeArray = [];
     score = 0;
     gameOver = false;
-    velocityY = 0; // Reset the velocity
-
+    // Apply the settings again
+    setGameSettings();
+    velocityY = 0;
        // Hide the restart button
        let restartButton = document.getElementById("restartButton");
        restartButton.style.display = "none";
@@ -115,7 +159,7 @@ function moveBird(e) {
         if (gameOver) {
             restartGame();
         } else {
-            velocityY = -6; // Apply jump
+            velocityY = isMobileDevice() ? mobileSettings.velocityY : desktopSettings.velocityY;
         }
     }
 }
