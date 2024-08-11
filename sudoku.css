@@ -13,7 +13,8 @@ hr {
 
 #board {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Adjusted to 6 columns for a 6x6 board */
+    grid-template-columns: repeat(9, 1fr); /* Adjusted to 6 columns for a 6x6 board */
+    grid-template-rows: repeat(9, 1fr);
     gap: 2px;
     max-width: 600px; /* Adjust as needed */
     margin: auto;
@@ -33,11 +34,12 @@ hr {
 
 #digits {
     display: flex; /* Use flexbox to arrange items in a single line */
-    flex-wrap: nowrap; /* Prevent wrapping to new lines */
-    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+    flex-wrap: wrap; /* Prevent wrapping to new lines */
+    /* overflow-x: auto; Allow horizontal scrolling if necessary */
     margin-bottom: 10px; /* Space between numbers and the board */
     justify-content: center; /* Center items horizontally */
     align-items: center; /* Center items vertically */
+    gap: 5px;
 }
 
 .number {
@@ -65,16 +67,24 @@ hr {
 }
 
 .tile-start {
-    background-color: whitesmoke;
+    background-color: rgb(222, 214, 214);
 }
 
 .horizontal-line {
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
 }
 
 .vertical-line {
-    border-right: 1px solid black;
+    border-right: 3px solid black;
 }
+.horizontal-linep {
+    border-top: 3px solid black;
+}
+
+.vertical-linep {
+    border-left: 3px solid black;
+}
+
 
 /* Winner Overlay */
 #winner-overlay {
@@ -94,7 +104,7 @@ hr {
 }
 
 #winner-message {
-    background-color: #fff; /* White background for the message */
+    background-color: #794949; /* White background for the message */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -103,15 +113,17 @@ hr {
 #winner-message h1 {
     margin: 10px 0;
     font-size: 2em;
+    color: rgb(0, 170, 255);
 }
 
 #winner-message p {
     margin: 10px 0;
+    color: rgb(0, 170, 255);
 }
 
 #winner-message i {
     font-size: 4em; /* Large trophy icon */
-    color: gold;
+    color: rgb(0, 170, 255);
 }
 
 #winner-message button {
@@ -150,11 +162,12 @@ hr {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Slightly different overlay color */
-    color: white;
+    color:transparent;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    backdrop-filter: blur(10px); /* Apply blur effect */
 }
 
 #winner-overlay .fa-trophy {

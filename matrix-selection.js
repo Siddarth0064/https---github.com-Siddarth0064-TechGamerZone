@@ -15,7 +15,7 @@ playButton.addEventListener('click', () => {
     if (selectedMatrix) {
         if (selectedMatrix === '3x3') {
             window.location.href = 'sudoku.html';
-        } else if (selectedMatrix === '2x2'){
+        } else if (selectedMatrix === '2x3'){
             window.location.href = 'sudaku1.html';
         }
         else{

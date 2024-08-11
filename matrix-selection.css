@@ -59,3 +59,32 @@ button:disabled {
 button:hover:not(:disabled) {
     background-color: #0056b3;
 }
+
+
+.note {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    position: absolute;
+    bottom: 20px; /* Adjust this value as needed */
+    width: calc(100% - 40px); /* Adjust width to fit container */
+    max-width: 600px;
+    text-align: center;
+}
+.note:hover {
+    border-color: blue; /* Changes the border color to blue on hover */
+    border-width: 2px; /* Optional: Adjusts the border width */
+    border-style: solid; /* Ensures the border is visible */
+}
+
+.note h2 {
+    margin-top: 0;
+}
+
+.note ol {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+}

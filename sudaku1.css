@@ -18,21 +18,33 @@
     height: 40px;
     font-size: 18px;
     text-align: center;
+    vertical-align: middle;
     line-height: 40px;
-    border: 1px solid black;
+    border: 0.5px solid #000;
+    position: relative;
+}
+.tile-start {
+    background-color: #ddd; /* Example fixed tile color */
 }
 
-.tile-fixed {
+/* .tile-fixed {
     background-color: lightgray;
+} */
+
+.bold-horizontal-line {
+    border-bottom: 3px solid #000;
 }
 
-.horizontal-line {
+.bold-vertical-line {
+    border-right: 3px solid #000;
+}
+/* .horizontal-line {
     border-bottom: 2px solid black;
 }
 
 .vertical-line {
     border-right: 2px solid black;
-}
+} */
 
 .digits {
     margin-top: 20px;
@@ -82,4 +94,19 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+}
+.number-text {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 40px; /* Adjust based on tile size */
+}
+
+.highlight-red {
+    color: red; /* Red color for repeated numbers */
+}
+
+.highlight-blue {
+    color: blue; /* Blue color for unique numbers */
 }

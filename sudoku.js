@@ -2,35 +2,135 @@ var numSelected = null;
 var tileSelected = null;
 var errors = 0;
 
-var board = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83----",
-    "81--45---"
+var boards = [
+  [  "659-1-28-",
+    "1---5--3-",
+    "2--8---1-",
+    "---135-7-",
+    "8--9----2",
+    "--3-7864-",
+    "3-2--9--4",
+    "-----18--",
+    "--876----"
+],
+[
+    "-6--72--1",
+    "8--1365--",
+    "--34-----",
+    "2--65--3-",
+    "--6--7-1-",
+    "---2--864",
+    "9-7-84---",
+    "--8--9-7-",
+    "---721-83"
+],
+[
+    "------92-",
+    "54--3-1--",
+    "--8-57--4",
+    "-5--8---3",
+    "9-3-468--",
+    "1--3---4-",
+    "-7-4-----",
+    "361-79-8-",
+    "----6--37"
+],
+[
+    "7--84-2-5",
+    "-3-15-4--",
+    "--5-6--7-",
+    "-9--3458-",
+    "-287--9-3",
+    "5-39--6--",
+    "--452--9-",
+    "--94-8---",
+    "8----17--"
+],
+[
+    "------7--",
+    "39-7-854-",
+    "86--54---",
+    "9-6-47---",
+    "1342---9-",
+    "-581-9--4",
+    "54-923--8",
+    "----7-9-5",
+    "-----1-3-"
+]
 ];
 
-var solution = [
-    "387491625",
-    "241568379",
-    "569327418",
-    "758619234",
-    "123784596",
-    "496253187",
-    "934176852",
-    "675832941",
-    "812945763"
+var solutions = [
+    ["659314287",
+    "187652439",
+    "234897516",
+    "426135978",
+    "871946352",
+    "593278641",
+    "312589764",
+    "765421893",
+    "948763125"],
+    [
+    "465872391",
+    "892136547",
+    "713495628",
+    "241658739",
+    "386947215",
+    "579213864",
+    "927384156",
+    "138569472",
+    "654721983" 
+    ],
+    [
+        "736814925",
+        "549632178",
+        "218957364",
+        "654281793",
+        "923746851",
+        "187395246",
+        "875423619",
+        "361579482",
+        "492168537" 
+    ],
+    [
+        "761849235",
+        "932157468",
+        "485263179",
+        "197634582",
+        "628715943",
+        "543982617",
+        "374526891",
+        "219478356",
+        "856391724"
+    ],
+    [
+        "415692783",
+        "392718546",
+        "867354129",
+        "926847351",
+        "134265897",
+        "758139264",
+        "541923678",
+        "283476915",
+        "679581432"
+    ]
 ];
+
+var board, solution;
 
 window.onload = function() {
+     // Select a random board and its corresponding solution
+     const randomIndex = Math.floor(Math.random() * boards.length);
+     board = boards[randomIndex];
+     solution = solutions[randomIndex];
+
     setGame();
 };
 
 function setGame() {
+    // Clear existing board
+    document.getElementById("board").innerHTML = '';
+    document.getElementById("digits").innerHTML = '';
+
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
         let number = document.createElement("div");
@@ -54,11 +154,17 @@ function setGame() {
                 tile.classList.add("tile-start");
                 tile.classList.add("tile-fixed"); // Mark this tile as fixed
             }
-            if (r == 2 || r == 5) {
+            if (r === 2 || r===5) {
                 tile.classList.add("horizontal-line");
             }
-            if (c == 2 || c == 5) {
+            if (c  === 2|| c===5) {
                 tile.classList.add("vertical-line");
+            }
+            if (r === 3 || r===6) {
+                tile.classList.add("horizontal-linep");
+            }
+            if (c  === 3|| c===6) {
+                tile.classList.add("vertical-linep");
             }
             tile.addEventListener("dragover", dragOver);
             tile.addEventListener("drop", drop);
@@ -133,6 +239,10 @@ function resetGame() {
         tile.classList.remove("tile-start");
         tile.classList.remove("tile-fixed"); // Remove the fixed class
     });
+     // Select a new random board and solution
+     const randomIndex = Math.floor(Math.random() * boards.length);
+     board = boards[randomIndex];
+     solution = solutions[randomIndex];
     // Optionally, you can reset the board state and reinitialize the game
     setGame();
 }
