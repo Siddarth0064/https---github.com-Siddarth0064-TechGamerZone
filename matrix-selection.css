@@ -5,30 +5,38 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #242424;
+    padding: 20px; /* Added padding for better spacing on smaller screens */
+    /* box-sizing: border-box; */
 }
+
 
 .container {
     text-align: center;
-    background-color: #fff;
+    background-color: #93918c;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* max-width: 100%; Ensure container doesn't overflow on small screens */
 }
 
 .matrix-options {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    /* flex-wrap: wrap; Allow options to wrap on small screens */
 }
 
+
 .matrix-option {
-    padding: 20px;
+    padding: 15px; /* Adjusted padding for better fit on small screens */
     margin: 5px;
     border: 1px solid #000;
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 10px;
+    flex: 1 1 calc(50% - 20px); /* Make options responsive */
+    /* box-sizing: border-box; */
 }
 
 .matrix-option:hover {
@@ -49,6 +57,9 @@ button {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%; /* Make button full width on small screens */
+    max-width: 300px; /* Limit the button's max width */
+    /* box-sizing: border-box; */
 }
 
 button:disabled {
@@ -66,7 +77,7 @@ button:hover:not(:disabled) {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #f4f4f4;
+    background-color: #e96464;
     position: absolute;
     bottom: 20px; /* Adjust this value as needed */
     width: calc(100% - 40px); /* Adjust width to fit container */
@@ -87,4 +98,39 @@ button:hover:not(:disabled) {
     text-align: left;
     margin: 0 auto;
     max-width: 600px;
+}
+
+
+/* Responsive Styles for Mobile Screens */
+@media (max-width: 768px) {
+    body {
+        height: auto; /* Allow the body height to adjust based on content */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .container {
+        width: 100%; /* Make container full width on small screens */
+        padding: 15px; /* Adjust padding for better fit */
+    }
+
+    .matrix-option {
+        padding: 10px; /* Reduce padding for small screens */
+        flex: 1 1 100%; /* Make each option take full width on small screens */
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px; /* Adjust font size for small screens */
+        max-width: 100%; /* Ensure the button takes full width */
+    }
+
+    .note {
+        bottom: 10px; /* Adjust bottom position for small screens */
+        width: 100%; /* Ensure note takes full width */
+        padding: 10px; /* Adjust padding for small screens */
+    }
+
+    .note ol {
+        padding-left: 20px; /* Adjust padding for better readability */
+    }
 }
