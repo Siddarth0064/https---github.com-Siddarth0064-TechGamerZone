@@ -144,7 +144,8 @@ hr {
 /* Responsive styles for mobile screens */
 @media (max-width: 600px) {
     #board {
-        grid-template-columns: repeat(6, 1fr); /* Adjust to 6 columns for a 6x6 board */
+        grid-template-columns: repeat(9, 1fr); /* Adjust to 6 columns for a 6x6 board */
+        grid-template-rows: repeat(9, 1fr);
         gap: 1px; /* Smaller gap on mobile */
     }
 
