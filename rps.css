@@ -1,0 +1,192 @@
+  /* Body styling to center everything */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+/* Wrapper to align the containers horizontally */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adds space between the containers */
+    position: absolute; /* Ensures the animations stay within the wrapper */
+}
+
+/* Container styling for each item (rock, paper, scissor) */
+ /* Container styling */
+ .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 15px;
+    opacity: 0; /* Hide initially */
+    position: absolute; /* Prevent overlap */
+    /* box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4); Blue shadow effect */
+}
+
+/* Icon styling */
+i {
+    font-size: 80px;
+    color: #206ec2; /* Blue icon color */
+    text-shadow: 0 4px 8px rgb(1, 230, 255); /* Blue shadow effect */
+    
+}
+i:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Text styling */
+h3 {
+    margin-top: 10px;
+    color: #206ec2; /* Primary blue color */
+    font-size: 28px; /* Slightly larger font size */
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    text-transform: uppercase; /* Make the text uppercase for a bold effect */
+    letter-spacing: 2px; /* Increase space between letters */
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    background: linear-gradient(45deg, #206ec2, #4fa8f7); /* Gradient text effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Show gradient inside text */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+h3:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+}
+
+
+/* Animation classes for each section */
+ /* Animation classes for each section */
+ .rock {
+    animation: appear-disappear 3s ease-in-out 0s forwards;
+}
+
+.paper {
+    animation: appear-disappear 3s ease-in-out 3s forwards;
+}
+
+.scissor {
+    animation: appear-disappear 3s ease-in-out 6s forwards;
+}
+
+/* Keyframes for animation */
+@keyframes appear-disappear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    75% {
+        opacity: 1;
+        transform: scale(2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+/* OPTIONS  */
+
+ /* OPTIONS section styling */
+ .options {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 3px solid rgb(1, 230, 255); /* Border color */
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white; /* Background color */
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2); /* Shadow for the options section */
+    width: 300px; /* Fixed width for better layout control */
+    height: 400px; /* Fixed height to ensure Play button stays at the bottom */
+    position: relative; /* Relative positioning for play button alignment */
+}
+
+h5 {
+    margin-top: 10px;
+    color: #206ec2; /* Primary blue color */
+    font-size: 28px; /* Slightly larger font size */
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    text-transform: uppercase; /* Make the text uppercase for a bold effect */
+    letter-spacing: 2px; /* Increase space between letters */
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    background: linear-gradient(45deg, #206ec2, #4fa8f7); /* Gradient text effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Show gradient inside text */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+/* Mode buttons container */
+.mode-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Space between mode buttons and play button */
+}
+
+/* Button styling */
+.option-btn {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Highlighted/selected button */
+.option-btn.selected {
+    background-color: #007bff; /* Darker blue for selected mode */
+    border: 2px solid rgb(1, 230, 255); /* Border color for selected mode */
+    color: rgb(0, 0, 0);
+}
+
+
+/* Hover effects */
+.option-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.option-btn:active {
+    background-color: #003d7a; /* Even darker blue when clicked */
+}
+
+/* Play button styling */
+.play-btn {
+    background-color: #28a745; /* Green background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: not-allowed; /* Disabled cursor */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.play-btn.enabled {
+    cursor: pointer;
+    background-color: #218838; /* Darker green when enabled */
+}
+
+.play-btn.enabled:hover {
+    background-color: #1e7e34; /* Even darker green on hover */
+}
+
+.play-btn.enabled:active {
+    background-color: #1c7430; /* Even darker green when clicked */
+}

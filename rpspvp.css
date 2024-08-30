@@ -1,0 +1,352 @@
+/* General Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    position: relative; /* Required for positioning */
+}
+
+/* General Styling for the Spinner Container */
+/* Spinner Container */
+.container.loading {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    font-size: 24px;
+    margin-top: 10px;
+    height: 100px; /* Set a height to ensure vertical centering works */
+}
+
+
+/* Spinner Rotation Animation */
+.container.loading i {
+    animation: spin-forward 3s linear infinite alternate; /* Forward and backward spin with alternate effect */
+    color: #007bff; /* Blue spinner color */
+}
+
+/* Keyframes for the Spin Forward Animation */
+@keyframes spin-forward {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Keyframes for the Spin Backward Animation */
+@keyframes spin-backward {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+/* Common Styling for Tech Ai and Me Text */
+.text-title {
+    font-size: 28px; /* Match the font size in the h2 styles */
+    color: #206ec2; /* Primary blue color */
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    text-transform: uppercase; /* Make the text uppercase for a bold effect */
+    letter-spacing: 2px; /* Increase space between letters */
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    background: linear-gradient(45deg, #206ec2, #4fa8f7); /* Gradient text effect */
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; Show gradient inside text */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    position: absolute; /* Positioning text on the left side */
+    left: 20px; /* Adjust distance from the left edge */
+}
+
+/* Tech Ai Specific Styling */
+.tech-ai {
+    top: 20px; /* Adjust distance from the top edge */
+}
+
+/* Me Specific Styling */
+.me {
+    bottom: 20px; /* Adjust distance from the bottom edge */
+}
+
+/* Timer Section */
+.timer-section {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    background: #f0f0f0; /* Light background color */
+}
+
+/* Timer Style */
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    background: #ff9800; /* Light orange background */
+    border-radius: 50%; /* Circular timer */
+    color: #ffffff;
+    font-size: 1rem; /* Font size for the timer */
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+    transition: background 0.5s ease; /* Smooth transition for background color */
+}
+
+/* Animation for timer */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes colorTransition {
+    0% {
+        background: #ff9800; /* Light orange */
+    }
+    50% {
+        background: #ff5722; /* Dark orange */
+    }
+    100% {
+        background: #f44336; /* Red */
+    }
+}
+
+.timer-transition {
+    animation: colorTransition 5s forwards; /* Adjust duration as needed */
+}
+
+
+/* Optional: Responsive styling */
+@media (max-width: 768px) {
+    .timer {
+        width: 120px;
+        height: 120px;
+        font-size: 2.5rem;
+    }
+}
+
+
+
+/* Wrapper for icons */
+.wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center icons horizontally */
+}
+
+/* Container Styling for Icons */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    /* background-color: #fff; */
+    /* border: 2px solid #007bff; */
+    cursor: pointer;
+}
+
+/* Icon Styling */
+/* General Icon Styling */
+i {
+    font-size: 80px;
+    color: #206ec2; /* Blue icon color */
+    text-shadow: 0 4px 8px rgb(1, 230, 255); /* Blue shadow effect */
+    transition: all 0.3s ease; /* Smooth transition for state changes */
+}
+
+/* Styling for Selected Icon */
+.container.selected {
+    /* background-color: #ffffff; Darker blue background for selected mode */
+    /* border: 2px solid rgb(56, 1, 255); Border color for selected mode */
+    color: rgb(244, 34, 44); /* Change color to black */
+    text-shadow: none; /* Remove text shadow when selected */
+    padding: 5px; /* Optional padding for visual effect */
+    border-radius: 10px; /* Optional rounded corners for a smoother effect */
+    
+}
+/* Set the text color to blue for selected containers */
+.container.selected h3 {
+    color: #007bff; /* Blue color for the text */
+}
+
+
+
+/* Hover Effect for Icons */
+.container:hover {
+    
+    border: 2px solid #007bff;
+}
+
+
+.container i {
+    color: inherit; /* Inherit color from container styles */
+}
+
+.container h3 {
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #000; /* Text color for labels */
+}
+
+
+
+/* Modal Styles */
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Sits above everything else */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+/* Modal content box */
+.modal-content {
+    background-color: #16a0f5;
+    margin: 15% auto; /* 15% from top and centered */
+    padding: 20px;
+    border: 1px solid #f03b3b;
+    width: 80%;
+    max-width: 400px; /* Set a max width */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #ea2424;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+/* Popup container */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.popup-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.popup-close:hover,
+.popup-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Content styles */
+#popup-body {
+    text-align: center;
+}
+
+#player-selection,
+#tech-ai-selection,
+#winner-message {
+    margin: 10px 0;
+}
+
+#selections-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between selections */
+    margin-bottom: 20px;
+}
+
+#player-selection, #tech-ai-selection {
+    text-align: center;
+}
+
+
+
+/* Container for main content that will be blurred */
+#background-container {
+    position: fixed; /* Fix the background container in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: filter 0.3s ease; /* Smooth transition for blur effect */
+    overflow: hidden; /* Prevents scrolling while blurred */
+}
+
+/* Styles for the blurred background */
+.blurred {
+    filter: blur(5px);
+    /* transition: filter 0.3s ease; */
+    overflow: hidden; /* Prevents scrolling while blurred */
+}
+
+/* Popup styles */
+#result-popup {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #01fffb;
+    border-radius: 8px;
+    background-color: #96c5d7;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure the popup is on top */
+    display: none; /* Initially hidden */
+    opacity: 0; /* Start with zero opacity for fade-in effect */
+    transition: opacity 0.3s ease;
+}
+
+#result-popup.show {
+    display: block;
+    opacity: 1;
+}
+

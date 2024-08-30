@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- FONT AWESOME-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="rpspvp.css">
+     
+</head>
+<body>
+    <div id="background-container" >
+    <!-- Tech Ai Section -->
+    <div class="tech-ai text-title">
+        <h2>Tech Ai :</h2>
+        <div class="container loading">
+            <i class="fa-solid fa-spinner"></i>
+        </div>
+    </div>
+
+    <!-- Timer Section -->
+    <div class="timer-section">
+        <div class="timer" id="timer">5</div>
+    </div>
+
+    <!-- Me Section -->
+    <div class="me text-title">
+        <h2>Me :</h2>
+        <div class="wrapper">
+            <!-- Rock -->
+            <div class="container rock" data-value="hand-back-fist">
+                <i class="fa-solid fa-hand-back-fist"></i>    
+                <h3>ROCK</h3>
+            </div>
+
+            <!-- Paper -->
+            <div class="container paper" data-value="hand">
+                <i class="fa-solid fa-hand"></i>
+                <h3>PAPER</h3>
+            </div>
+            
+            <!-- Scissor -->
+            <div class="container scissor" data-value="hand-scissors">
+                <i class="fa-solid fa-hand-scissors"></i>
+                <h3>SCISSOR</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+     <!-- Modal -->
+     <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="close" class="close">&times;</span>
+            <p>Time is up! Please select one of the icons.</p>
+        </div>
+    </div>
+
+
+    <!-- Popup for displaying the result -->
+    <div id="result-popup" >
+        <div id="selections-container">
+            <div id="player-selection"></div>
+            <div id="tech-ai-selection"></div>
+        </div>
+        <div id="winner-message"></div>
+    </div>
+    
+
+    <script src="rpspvp.js"></script>
+</body>
+</html>

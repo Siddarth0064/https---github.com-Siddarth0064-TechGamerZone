@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Animation</title>
+    
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="rps.css">
+</head>
+<body>
+
+    
+    <div class="wrapper">
+        <!-- Rock -->
+        <div class="container rock">
+            <i class="fa-solid fa-hand-back-fist"></i>    
+            <h3>ROCK</h3>
+        </div>
+
+        <!-- Paper -->
+        <div class="container paper">
+            <i class="fa-solid fa-hand"></i>
+            <h3>PAPER</h3>
+        </div>
+        
+        <!-- Scissor -->
+        <div class="container scissor">
+            <i class="fa-solid fa-hand-scissors"></i>
+            <h3>SCISSOR</h3>
+        </div>
+    </div>
+
+
+     <!-- Options section -->
+    <div class="options">
+        <h5>Choose Mode</h5>
+        <div class="mode-buttons">
+            <button class="option-btn" data-mode="ai">Player VS Tech AI</button>
+            <button class="option-btn" data-mode="player">Player VS Player</button>
+        </div>
+        <button class="play-btn" disabled>Play</button>
+    </div>
+    <script src="rps.js"></script>
+    
+</body>
+</html>
